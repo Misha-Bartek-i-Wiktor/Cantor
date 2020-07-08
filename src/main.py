@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import requests
 import json
 
@@ -7,4 +8,6 @@ q = query.text
 
 
 media = json.loads(q)
-print(media)
+
+media2 = (media.get('rates'))
+print(media2.get('PLN'))
