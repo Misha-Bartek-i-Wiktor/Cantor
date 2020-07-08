@@ -2,12 +2,20 @@
 import requests
 import json
 
-query = requests.get('https://api.exchangeratesapi.io/latest?base=USD')
+base_currency = input('Start -> ')
+final_currency = input('Final -> ')
+units_of_currency = float(input('How much? -> '))
 
-q = query.text
+
+def func(base, final, units):
+    query = requests.get('https://api.exchangeratesapi.io/latest?base=' + base)
+
+    q = query.text
+
+    media = json.loads(q)
+
+    media2 = (media.get('rates'))
+    print(float(media2.get(final) * units))
 
 
-media = json.loads(q)
-
-media2 = (media.get('rates'))
-print(media2.get('PLN'))
+func(base_currency, final_currency, units_of_currency)
